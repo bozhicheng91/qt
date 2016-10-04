@@ -23,10 +23,24 @@ void PaintedWidget::paintEvent(QPaintEvent *)
 {
     //创建QPainter 对象
     QPainter painter(this);
+
+    QPen pen;
+
+    QVector<qreal> dashes;
+    qreal space = 4;
+
+    dashes << 1 << space << 3 << space << 9 << space
+           << 27 << space << 9 << space;
+
+    pen.setDashPattern(dashes);
+    painter.setPen(pen);
+
     painter.drawLine(80, 100, 650, 500);
     painter.setPen(Qt::red);
     painter.drawRect(10, 10, 100, 400);
     painter.setPen(QPen(Qt::green, 5));
     painter.setBrush(Qt::blue);
     painter.drawEllipse(50, 150, 400, 200);
+
+
 }
